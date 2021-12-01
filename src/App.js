@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
+import './App.css'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
@@ -56,6 +57,10 @@ class App extends Component {
           />
         ))}
 	      <main className='container'>
+          <Route
+            exact path='/'
+            render={() => (<h1 className='hero'>FLOCK</h1>)}
+          />
 	        <Route
             path='/sign-up'
             render={() => (
@@ -82,6 +87,13 @@ class App extends Component {
           <AuthenticatedRoute
             user={user}
             path='/change-password'
+            render={() => (
+              <ChangePassword msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/profile'
             render={() => (
               <ChangePassword msgAlert={this.msgAlert} user={user} />
             )}

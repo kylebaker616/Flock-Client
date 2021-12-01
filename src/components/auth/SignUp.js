@@ -38,7 +38,7 @@ onSignUp = (event) => {
         variant: 'success'
       })
     )
-    .then(() => history.push('/'))
+    .then(() => history.push('/profile'))
     .catch((error) => {
       this.setState({ email: '', password: '', passwordConfirmation: '' })
       msgAlert({
@@ -90,7 +90,7 @@ render () {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
+          <Button variant='success' type='submit'>Submit</Button>
         </Form>
       </div>
     </div>
