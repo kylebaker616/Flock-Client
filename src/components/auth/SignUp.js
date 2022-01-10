@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
@@ -13,6 +14,8 @@ class SignUp extends Component {
 
     this.state = {
       email: '',
+      username: '',
+      language: '',
       password: '',
       passwordConfirmation: ''
     }
@@ -50,7 +53,7 @@ onSignUp = (event) => {
 }
 
 render () {
-  const { email, password, passwordConfirmation } = this.state
+  const { email, username, language, password, passwordConfirmation } = this.state
 
   return (
     <div className='row'>
@@ -65,6 +68,28 @@ render () {
               name='email'
               value={email}
               placeholder='Enter email'
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId='username'>
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              required
+              type='text'
+              name='username'
+              value={username}
+              placeholder='Username'
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId='language'>
+            <Form.Label>Language</Form.Label>
+            <Form.Control
+              required
+              type='text'
+              name='language'
+              value={language}
+              placeholder='Language'
               onChange={this.handleChange}
             />
           </Form.Group>
@@ -90,7 +115,9 @@ render () {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button variant='success' type='submit'>Submit</Button>
+          <Button variant='success' type='submit'>
+						Submit
+          </Button>
         </Form>
       </div>
     </div>

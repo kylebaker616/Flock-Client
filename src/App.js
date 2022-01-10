@@ -11,6 +11,8 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import NewPost from './components/Posts/CreatePost'
+import ViewPosts from './components/Posts/ViewPosts'
 
 class App extends Component {
   constructor (props) {
@@ -45,8 +47,8 @@ class App extends Component {
 
     return (
       <Fragment>
-	      <Header user={user} />
-	      {msgAlerts.map((msgAlert) => (
+        <Header user={user} />
+        {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
             heading={msgAlert.heading}
@@ -56,12 +58,13 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-	      <main className='container'>
+        <main className='container'>
           <Route
-            exact path='/'
-            render={() => (<h1 className='hero'>FLOCK</h1>)}
+            exact
+            path='/'
+            render={() => <h1 className='hero'>FLOCK</h1>}
           />
-	        <Route
+          <Route
             path='/sign-up'
             render={() => (
               <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -97,6 +100,16 @@ class App extends Component {
             render={() => (
               <ChangePassword msgAlert={this.msgAlert} user={user} />
             )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/NewPost'
+            render={() => <NewPost msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/ViewPosts'
+            render={() => <ViewPosts msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>
